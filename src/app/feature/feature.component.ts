@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -12,9 +12,12 @@ import { TranslateService } from '@ngx-translate/core';
     `,
   ],
 })
-export class FeatureComponent {
+export class FeatureComponent implements OnInit {
   helloFromService = '';
-  constructor(private translateService: TranslateService) {
-    this.helloFromService = this.translateService.instant('HELLO');
+  constructor(private translateService: TranslateService) {}
+
+  ngOnInit(): void {
+    this.translateService.use(this.translateService.getDefaultLang());
+    this.helloFromService = this.translateService.instant('HELLO.MESSAGE');
   }
 }
