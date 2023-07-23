@@ -7,7 +7,8 @@ import { TranslateService } from '@ngx-translate/core';
   styles: [
     `
       main {
-        background-color: lightgrey;
+        background-color: bisque;
+        padding: 1rem;
       }
     `,
   ],
@@ -18,6 +19,6 @@ export class FeatureComponent implements OnInit {
 
   ngOnInit(): void {
     this.translateService.use(this.translateService.getDefaultLang());
-    this.helloFromService = this.translateService.instant('HELLO.MESSAGE');
+    this.helloFromService = this.translateService.instant('MFE2.HELLO.MESSAGE');
   }
 }

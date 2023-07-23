@@ -8,7 +8,7 @@ import { FeatureComponent } from './feature.component';
 import { FeatureRoutingModule } from './feature-routing.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/mfe/i18n/', '.json');
+  return new TranslateHttpLoader(http, './assets/mfe2/i18n/', '.json');
 }
 
 @NgModule({
