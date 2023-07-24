@@ -1,5 +1,7 @@
 {
-  "HELLO": {
-    "MESSAGE": "Hi from remote  "
+  "MFE2": {
+    "HELLO": {
+      "MESSAGE": "Hi from remote MFE2 "
+    }
   }
 }

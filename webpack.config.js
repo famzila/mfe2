@@ -4,55 +4,71 @@ const path = require("path");
 const share = mf.share;
 
 const sharedMappings = new mf.SharedMappings();
-sharedMappings.register(
-  path.join(__dirname, 'tsconfig.json'),
-  [/* mapped paths to share */]);
+sharedMappings.register(path.join(__dirname, "tsconfig.json"), [
+  /* mapped paths to share */
+]);
 
 module.exports = {
   output: {
-    uniqueName: "mfe",
-    publicPath: "auto"
+    uniqueName: "mfe2",
+    publicPath: "auto",
   },
   optimization: {
-    runtimeChunk: false
+    runtimeChunk: false,
   },
   resolve: {
     alias: {
       ...sharedMappings.getAliases(),
-    }
+    },
   },
   experiments: {
-    outputModule: true
+    outputModule: true,
   },
   plugins: [
     new ModuleFederationPlugin({
       library: { type: "module" },
 
-      // For remotes (please adjust)
-      name: "mfe",
+      name: "mfe2",
       filename: "remoteEntry.js",
       exposes: {
-        './Module': './src/app/remote-entry/remote-entry.module.ts',
+        "./Module": "./src/app/remote-entry/remote-entry.module.ts",
       },
 
-      // For hosts (please adjust)
-      // remotes: {
-      //     "mfe": "http://localhost:3000/remoteEntry.js",
-
-      // },
-
       shared: share({
-        "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-        "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-        "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-        "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-        "@ngx-translate/core": { singleton: false, strictVersion: true, requiredVersion: 'auto' },
-        "@ngx-translate/http-loader": { singleton: false, strictVersion: true, requiredVersion: 'auto' },
+        "@angular/core": {
+          singleton: true,
+          strictVersion: true,
+          requiredVersion: "auto",
+        },
+        "@angular/common": {
+          singleton: true,
+          strictVersion: true,
+          requiredVersion: "auto",
+        },
+        "@angular/common/http": {
+          singleton: true,
+          strictVersion: true,
+          requiredVersion: "auto",
+        },
+        "@angular/router": {
+          singleton: true,
+          strictVersion: true,
+          requiredVersion: "auto",
+        },
+        "@ngx-translate/core": {
+          singleton: true,
+          strictVersion: true,
+          requiredVersion: "auto",
+        },
+        "@ngx-translate/http-loader": {
+          singleton: true,
+          strictVersion: true,
+          requiredVersion: "auto",
+        },
 
-        ...sharedMappings.getDescriptors()
-      })
-
+        ...sharedMappings.getDescriptors(),
+      }),
     }),
-    sharedMappings.getPlugin()
+    sharedMappings.getPlugin(),
   ],
 };
