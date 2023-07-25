@@ -8,7 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/mfe/i18n/', '.json');
+  return new TranslateHttpLoader(http, './assets/mfe2/i18n/', '.json');
 }
 
 @NgModule({
@@ -29,4 +29,4 @@ export function HttpLoaderFactory(http: HttpClient) {
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
